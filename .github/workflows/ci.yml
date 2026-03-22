@@ -63,7 +63,7 @@ jobs:
         run: docker image tag ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.ref_name }}
 
       - name: Scanning docker image for vulnerabilities
-        uses: aquasecurity/trivy-action@0
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
         with:
           image-ref: ${{ secrets.DOCKER_USERNAME}}/backend:${{ github.sha }}
           ignore-unfixed: true
