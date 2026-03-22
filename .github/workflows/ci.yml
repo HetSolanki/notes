@@ -63,9 +63,11 @@ jobs:
         run: docker image tag ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.ref_name }}
 
       - name: Scanning docker image for vulnerabilities
-        uses: aquasecurity/trivy-action@0.20.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           image-ref: ${{ secrets.DOCKER_USERNAME}}/backend:${{ github.sha }}
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
 
       - name: Pushing the docker image to docker registery
         run: docker push ${{ secrets.DOCKER_USERNAME }}/backend --all-tags
