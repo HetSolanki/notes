@@ -27,8 +27,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-     - name: Installing Dependencies
-       run: npm ci
+      - name: Installing Dependencies
+        run: npm ci
 
   unit-testing:
     runs-on: ubuntu-latest
