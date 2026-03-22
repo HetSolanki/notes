@@ -1,7 +1,8 @@
 {
 	"type": "module",
 	"scripts": {
-		"test:unit": "NODE_OPTIONS='--experimental-vm-modules' jest --forceExit --detectOpenHandles"
+		"test:unit": "NODE_OPTIONS='--experimental-vm-modules' jest --forceExit --detectOpenHandles",
+		"lint": "eslint ."
 	},
 	"dependencies": {
 		"cors": "^2.8.6",
