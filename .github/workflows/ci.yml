@@ -30,6 +30,7 @@ jobs:
 
       - name: Installing Dependencies
         run: npm ci
+        working-directory: ./backend
 
   unit-testing:
     runs-on: ubuntu-latest
@@ -81,6 +82,7 @@ jobs:
       
       - name: Audit Packages
         run: npm audit --audit-level=high
+        working-directory: ./backend
 
   build:
     runs-on: ubuntu-latest
