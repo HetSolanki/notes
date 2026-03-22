@@ -34,6 +34,7 @@ jobs:
         with:
           node-version: '24'
           cache: 'npm'
+          cache-dependency-path: './backend/package-lock.json'
 
       - name: Installing dependencie
         run: npm ci
