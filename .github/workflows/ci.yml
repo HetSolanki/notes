@@ -49,6 +49,11 @@ jobs:
 
       - name: Unit Testing
         run: npm run test:unit
+      
+      - name: setup docker buildx
+        uses: docker/buildx-action@v3
+        with:
+          driver: docker-container
 
       - name: Build backend image
         uses: docker/build-push-action@v3
