@@ -36,11 +36,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './backend/package-lock.json'
 
-      - name: Linting
-        run: npm run lint
-
       - name: Installing dependencie
         run: npm ci
+
+      - name: Linting
+        run: npm run lint
 
       - name: Security Composition Analysis
         run: npm audit
@@ -89,5 +89,4 @@ jobs:
 
       - name: Pushing the docker image to docker registery
         run: docker push ${{ secrets.DOCKER_USERNAME }}/backend --all-tags
-
 
