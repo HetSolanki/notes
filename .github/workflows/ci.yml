@@ -70,7 +70,7 @@ jobs:
           pip install semgrep
           semgrep scan
     
-  audit:
+  sca:
     runs-on: ubuntu-latest
 
     steps:
