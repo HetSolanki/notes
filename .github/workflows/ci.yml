@@ -89,6 +89,12 @@ jobs:
     needs: [lint, sca, sast, unit-testing]
 
     steps:
+
+      - name: Setup buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container
+
       - name: Build backend image
         uses: docker/build-push-action@v6
         with:
