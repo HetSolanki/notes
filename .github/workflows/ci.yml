@@ -1,0 +1,73 @@
+name: build and test
+
+on:
+  push:
+    tags: ['v*']
+    branches: ['main']
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          submodules: false
+
+      - name: Setup node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Installing dependencie
+        run: npm ci
+
+      - name: Security Composition Analysis
+        run: npm audit
+      
+      - name: Static Application Security Testing
+        run: | 
+          pip install semgrep
+          semgrep scan
+
+      - name: Unit Testing
+        run: npm run test:unit
+
+      - name: Build backend image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./backend
+          push: false
+          tags: ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }}
+          cache-to: type=gha,mode=max
+          cache-from: type=gha
+
+      - name: Tag docker image with github tags
+        if: startsWith(github.ref, 'refs/tags/')
+        run: docker image tag ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.ref_name }}
+
+      - name: Scanning docker image for vulnerabilities
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: ${{ secrets.DOCKER_USERNAME}}/backend:${{ github.sha }}
+
+      - name: Pushing the docker image to docker registery
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/backend --all-tags
+
+

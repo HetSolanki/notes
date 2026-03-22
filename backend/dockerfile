@@ -4,8 +4,9 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
-FROM gcr.io/distroless/nodejs24-debian13
+FROM gcr.io/distroless/nodejs24-debian13:nonroot
 WORKDIR /backend
 ENV secret=1234
 COPY  --from=builder  /build .
+USER nonroot
 CMD ["insert.js"]
