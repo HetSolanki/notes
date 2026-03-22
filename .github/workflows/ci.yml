@@ -61,6 +61,7 @@ jobs:
           context: ./backend
           push: false
           tags: ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }}
+          load: true
           cache-to: type=gha,mode=max
           cache-from: type=gha
 
