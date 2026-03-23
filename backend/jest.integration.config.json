@@ -1,0 +1,7 @@
+{
+  "testEnvironment": "node",
+  "transform": {},
+  "testTimeout": 30000,
+  "testMatch": ["**/integration.test.js"],
+  "setupFilesAfterEnv": ["<rootDir>/test-setup.integration.js"]
+}

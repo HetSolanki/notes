@@ -1,0 +1,14 @@
+name: notes
+
+services:
+  notes-db:
+    ports:
+      - "3306:3306"
+    profiles:
+      - test
+
+  notes-redis:
+    ports:
+      - "6379:6379"
+    profiles:
+      - test
