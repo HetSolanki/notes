@@ -193,6 +193,7 @@ jobs:
       - name: Setup database
         run: |
           mysql -h mysql -u${{ secrets.TEST_MYSQL_USER }} -p${{ secrets.TEST_MYSQL_PASSWORD }} mydb < schema.sql
+        working-directory: ./backend
 
       - name: Install Dependencies
         run: npm ci
