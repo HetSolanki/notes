@@ -6,8 +6,7 @@ COPY . .
 
 FROM node:20-slim
 WORKDIR /backend
-ENV secret=1234
-COPY  --from=builder  /build .
-USER nonroot
+USER node
+COPY  --from=builder --chown=node:node  /build .
 EXPOSE 4000
 CMD ["insert.js"]
