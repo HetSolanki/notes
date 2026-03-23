@@ -1,0 +1,7 @@
+{
+  "testEnvironment": "node",
+  "transform": {},
+  "testTimeout": 30000,
+  "testMatch": ["**/*.test.js"],
+  "testPathIgnorePatterns": ["/integration.test.js"]
+}
