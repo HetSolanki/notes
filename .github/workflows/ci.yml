@@ -71,6 +71,7 @@ jobs:
 
   unit-testing:
     runs-on: ubuntu-latest
+    needs: [install]
 
     steps:
       - name: checkout source code
@@ -105,6 +106,7 @@ jobs:
     
   sca:
     runs-on: ubuntu-latest
+    needs: [install]
 
     steps:
       - name: checkout source code
