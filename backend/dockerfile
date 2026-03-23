@@ -9,4 +9,5 @@ WORKDIR /backend
 ENV secret=1234
 COPY  --from=builder  /build .
 USER nonroot
+EXPOSE 4000
 CMD ["insert.js"]

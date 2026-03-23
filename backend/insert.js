@@ -15,10 +15,6 @@ app.get("/", (req, res) => {
   res.json({ connection: "ok" });
 });
 
-AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
-AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-
-const AWS_ACCESS_SECRET_KEY="awefiojawefiojwfoij"
 app.get("/api", async (req, res) => {
 	try {
 		const cacheKey = "todos";

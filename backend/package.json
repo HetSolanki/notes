@@ -2,6 +2,7 @@
 	"type": "module",
 	"scripts": {
 		"test:unit": "NODE_OPTIONS='--experimental-vm-modules' jest --forceExit --detectOpenHandles",
+		"test:integration": "NODE_ENV=test NODE_OPTIONS='--experimental-vm-modules' jest --config jest.integration.config.json --forceExit --detectOpenHandles --runInBand",
 		"lint": "eslint ."
 	},
 	"dependencies": {
