@@ -184,7 +184,7 @@ jobs:
           done
       - name: Setup database
         run: |
-          mysql -h mysql -u$TEST_MYSQL_USER -p$TEST_MYSQL_PASSWORD mydb < schema.sql
+          mysql -h mysql -u mysql -p admin123 mydb < schema.sql
 
       - name: Install Dependencies
         run: npm ci
