@@ -101,7 +101,7 @@ jobs:
     needs: [lint, sca, sast, unit-testing, secrets-scanning]
 
     permissions:
-      package: write
+      packages: write
 
     steps:
       - name: Checkout source code
