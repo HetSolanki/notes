@@ -2,7 +2,7 @@
 	"type": "module",
 	"scripts": {
 		"test:unit": "NODE_OPTIONS='--experimental-vm-modules' jest --config jest.config.json --forceExit --detectOpenHandles",
-		"test:integration": "NODE_ENV=test TEST_DB_HOST=mysql TEST_DB_PORT=3306 TEST_DB_USERNAME=root TEST_DB_PASSWORD=root TEST_DB_DATABASE=test_notes TEST_REDIS_URL=redis://redis:6379 NOTES_REDIS_URL=redis://redis:6379 NODE_OPTIONS='--experimental-vm-modules' jest --config jest.integration.config.json --forceExit --detectOpenHandles --runInBand",
+		"test:integration": "NODE_ENV=test TEST_DB_HOST=mysql TEST_DB_PORT=3306 TEST_DB_USERNAME=root TEST_DB_PASSWORD=root TEST_DB_DATABASE=mydb TEST_REDIS_URL=redis://redis:6379 NOTES_REDIS_URL=redis://redis:6379 NODE_OPTIONS='--experimental-vm-modules' jest --config jest.integration.config.json --forceExit --detectOpenHandles --runInBand",
 		"lint": "eslint ."
 	},
 	"dependencies": {
