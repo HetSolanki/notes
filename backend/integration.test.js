@@ -28,9 +28,7 @@ describe('Notes API Integration Tests', () => {
     // Create test table
     await testConnection.execute(`
       CREATE TABLE IF NOT EXISTS notes (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        title VARCHAR(255),
       )
     `);
   });
