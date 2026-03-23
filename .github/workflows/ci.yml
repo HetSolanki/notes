@@ -126,7 +126,7 @@ jobs:
 
       - name: Tag docker image with github tags
         if: startsWith(github.ref, 'refs/tags/')
-        run: docker image tag ${{ secret.REGISTERY }}/${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.ref_name }}
+        run: docker image tag ${{ secrets.REGISTERY }}/${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.ref_name }}
 
       - name: Scanning docker image for vulnerabilities
         uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
