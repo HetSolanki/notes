@@ -179,9 +179,12 @@ jobs:
 
       - name: Wait for MYSQL
         run: |
-          until mysqladmin ping -h 127.0.0.1 -u${{ secrets.TEST_MYSQL_USER }} -p${{ secrets.TEST_MYSQL_PASSWORD }}; do
+          until mysqladmin ping -h mysql -u${{ secrets.TEST_MYSQL_USER }} -p${{ secrets.TEST_MYSQL_PASSWORD }}; do
             sleep 2
           done
+      - name: Setup database
+        run: |
+          mysql -h mysql -u${{ secrets.TEST_MYSQL_USER }} -p${{ secrets.TEST_MYSQL_PASSWORD}} mydb < schema.sql
 
       - name: Install Dependencies
         run: npm ci
