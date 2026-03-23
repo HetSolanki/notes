@@ -14,6 +14,18 @@ permissions:
   contents: read
   
 jobs:
+  secrets-scanning:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Scans for secret leaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   lint:
     runs-on: ubuntu-latest
     
@@ -86,7 +98,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: [lint, sca, sast, unit-testing]
+    needs: [lint, sca, sast, unit-testing, secrets-scanning]
 
     steps:
       - name: Checkout source code
