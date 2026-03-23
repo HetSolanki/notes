@@ -28,7 +28,7 @@ describe('Notes API Integration Tests', () => {
     // Create test table
     await testConnection.execute(`
       CREATE TABLE IF NOT EXISTS notes (
-        title VARCHAR(255),
+        title VARCHAR(255)
       )
     `);
   });
