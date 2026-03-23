@@ -148,6 +148,17 @@ jobs:
     name: "Integration Testing"
     needs: [build]
     container: thehetsolanki/backend:${{ github.sha }}
+    env:
+      - TEST_DB_HOST: ${{ secrets.TEST_DB_HOST }}
+      - TEST_DB_PORT: ${{ secrets.TEST_DB_PORT }}
+      - TEST_DB_USERNAME: ${{ secrets.TEST_DB_USERNAME }}
+      - TEST_DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
+      - TEST_DB_DATABASE: ${{ secrets.TEST_DB_DATABASE }}
+      - TEST_MYSQL_ROOT_PASSWORD: ${{ secrets.TEST_MYSQL_ROOT_PASSWORD }}
+      - TEST_MYSQL_USER: ${{ secrets.TEST_DB_USERNAME }}
+      - TEST_MYSQL_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
+      - TEST_MYSQL_DATABASE: ${{ secrets.TEST_DB_DATABASE }}
+      - TEST_REDIS_URL: ${{ secrets.TEST_REDIS_URL }}
 
     services:
       mysql:
