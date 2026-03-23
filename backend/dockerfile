@@ -6,7 +6,6 @@ COPY . .
 
 FROM node:20-slim
 WORKDIR /backend
-USER node
-COPY  --from=builder --chown=node:node  /build .
+COPY  --from=builder  /build .
 EXPOSE 4000
 CMD ["insert.js"]
