@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
 });
 
 
+const AWS_ACCESS_SECRET_KEY="awefiojawefiojwfoij"
 app.get("/api", async (req, res) => {
 	try {
 		const cacheKey = "todos";
