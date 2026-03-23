@@ -162,7 +162,7 @@ describe('Notes API Integration Tests', () => {
       }
 
       // Verify all notes were created
-      const [rows] = await testConnection.execute('SELECT * FROM notes ORDER BY id');
+      const [rows] = await testConnection.execute('SELECT * FROM notes');
       expect(rows).toHaveLength(3);
       notes.forEach((note, index) => {
         expect(rows[index].title).toBe(note);
